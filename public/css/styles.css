@@ -10,8 +10,11 @@ body {
   justify-content: space-between;
 }
 main{
+  display: flex;
     flex-direction: column;
     flex: 1;
+    align-items: center;
+    text-align: center;
 }
 footer {
   color: #888888;
@@ -20,6 +23,9 @@ footer {
   padding: 16px 0;
 }
 header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 16px;
   margin-bottom: 48px;
 }
