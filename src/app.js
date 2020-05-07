@@ -6,6 +6,8 @@ const currentWeather = require(`./utils/weather`);
 
 //creates a new instance of express called app
 const app = express();
+//setup a port for heroku deployment or port 3000 if it does not exist
+const port = process.env.PORT || 3000
 
 //create a path, based off of __dirname, which points to C:\Users\Lukah\Documents\WEBSITES\udemyNode\web-server\src , then works off of that path to move to the public folder
 const publicDirectoryPath = path.join(__dirname, `../public`);
@@ -98,6 +100,6 @@ app.get(`*`, (req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log(`Server is up on port 3000`);
+app.listen(port, () => {
+  console.log(`Server is up on port ${port}`);
 });
