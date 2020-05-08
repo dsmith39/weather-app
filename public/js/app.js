@@ -3,7 +3,10 @@ const weatherForm = document.querySelector(`form`);
 const search = document.querySelector(`input`);
 const errorMessage = document.getElementById(`error`);
 const weatherTitle = document.getElementById(`weatherHeader`);
-const weatherMessage = document.getElementById(`weatherInfo`);
+const weatherTemp = document.getElementById(`weatherTemp`);
+const weatherWind = document.getElementById(`weatherWind`);
+const weatherHumidity = document.getElementById(`weatherHumidity`);
+const weatherDescription = document.getElementById(`weatherDescription`);
 
 // errorMessage.textContent = `From Javascript`;
 
@@ -16,7 +19,10 @@ weatherForm.addEventListener(`submit`, (e) => {
   //starts a loading message once the form is submitted
   errorMessage.textContent = `Loading Weather Information`;
   weatherHeader.textContent = ``;
-  weatherMessage.textContent = ``;
+  weatherTemp.textContent = ``;
+  weatherHumidity.textContent = ``;
+  weatherWind.textContent = ``;
+  weatherDescription.textContent = ``;
   
   //fetches the API route that I created in src/app.js and adds in the location from the user's search
   fetch(`/weather?address=${location}`).then(
@@ -27,7 +33,10 @@ weatherForm.addEventListener(`submit`, (e) => {
         } else {
             errorMessage.textContent = ``;
           weatherHeader.textContent = `${data.location}:`;
-          weatherMessage.textContent = `${data.forecast}`;
+          weatherTemp.textContent = `The Current Temperature is ${data.temp}, but It feels like ${data.feelTemp}. `;
+          weatherDescription.textContent = `The Weather outside is ${data.description}`;
+          weatherWind.textContent = `The Wind is blowing ${data.windSpeed}mph ${data.windDirection}`;
+          weatherHumidity.textContent = `The current humidity is ${data.humidity}%`;
         }
       });
     }

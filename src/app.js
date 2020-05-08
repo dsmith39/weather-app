@@ -68,7 +68,12 @@ app.get(`/weather`, (req, res) => {
               res.send(error);
             } else {
               res.send({
-                forecast: weatherData,
+                temp: weatherData.temp,
+                feelTemp: weatherData.feelTemp,
+                description: weatherData.description,
+                humidity: weatherData.humidity,
+                windSpeed: weatherData.windSpeed,
+                windDirection: weatherData.windDirection,
                 location: location,
                 address: req.query.address,
               });
